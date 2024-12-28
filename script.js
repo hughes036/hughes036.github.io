@@ -1,17 +1,18 @@
 const gridColor = "black";
 const bigAccentColor = "red";
 const tripletColor = "blue";
-const quintColor = "green";
+const quintColor = "gray";
 
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 ctx.fillStyle = bigAccentColor;
 
 const wholeWidth = 1000; 
-const noteWidth = 8;
-const height = 20;
+const noteWidth = 15;
+const height = 15;
 const padding = 10;
 const numBeats = 8;
+const spacing = 2;
 
 // 4 over 5 polyrhythm
 let numNotes = (4 / 5) * numBeats;
@@ -66,9 +67,6 @@ ctx.fillStyle = tripletColor;
 draw(9, numNotes);
 
 ctx.fillStyle = gridColor;
-// Quarters again
-// draw(10, numBeats)
-
 numNotes = (16 / 2) * numBeats;
 // 32nd notes
 draw(10, numNotes);
@@ -80,7 +78,7 @@ function draw(row, numNotes, tick = false){
         const distanceBetweenNotes = wholeWidth / numNotes;
         const x = i * distanceBetweenNotes;
         const y = row * height;
-        ctx.fillRect(padding + x, tick ? + (padding + y + height/2) : (padding + y), tick ? noteWidth/2 : noteWidth, tick ? height/2 : height);
+        ctx.fillRect(padding + x, tick ? + (padding + y + height/2) : (padding + y), tick ? noteWidth/2 : noteWidth - spacing, tick ? height/2 : height - spacing);
         ctx.stroke();
     }
 }
